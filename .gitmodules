@@ -1,0 +1,9 @@
+[submodule "emacs.d/vendor/textmate.el"]
+	path = emacs.d/vendor/textmate.el
+	url = git://github.com/defunkt/textmate.el.git
+[submodule "emacs.d/vendor/twilight-emacs"]
+	path = emacs.d/vendor/twilight-emacs
+	url = git://github.com/crafterm/twilight-emacs.git
+[submodule "emacs.d/vendor/rspec-mode"]
+	path = emacs.d/vendor/rspec-mode
+	url = git://github.com/pezra/rspec-mode.git
