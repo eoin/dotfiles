@@ -6,6 +6,7 @@
 (load "elisp/util")
 (load "elisp/theme")
 (load "elisp/modes")
+(load "elisp/temp")
 
 ;; remove chrome
 (when (functionp 'tool-bar-mode) (tool-bar-mode))
@@ -15,4 +16,3 @@
 (setq inhibit-startup-message t)
 
 (vendor 'maxframe)
-
