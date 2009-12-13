@@ -6,7 +6,9 @@
 (load "elisp/util")
 (load "elisp/theme")
 (load "elisp/modes")
+(load "elisp/buffers")
 (load "elisp/temp")
+
 
 ;; remove chrome
 (when (functionp 'tool-bar-mode) (tool-bar-mode))
