@@ -18,3 +18,4 @@
 (setq inhibit-startup-message t)
 
 (vendor 'maxframe)
+(vendor 'ack)
