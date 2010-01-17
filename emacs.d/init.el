@@ -9,9 +9,7 @@
 (load "elisp/buffers")
 (load "elisp/temp")
 
-
 ;; remove chrome
-(when (functionp 'tool-bar-mode) (tool-bar-mode))
 (when (functionp 'scroll-bar-mode) (scroll-bar-mode))
 
 ;; dont show the GNU splash screen
@@ -19,3 +17,4 @@
 
 (vendor 'maxframe)
 (vendor 'ack)
+

@@ -7,3 +7,6 @@
 [submodule "emacs.d/vendor/rspec-mode"]
 	path = emacs.d/vendor/rspec-mode
 	url = git://github.com/pezra/rspec-mode.git
+[submodule "emacs.d/vendor/rinari"]
+	path = emacs.d/vendor/rinari
+	url = git://github.com/eschulte/rinari.git

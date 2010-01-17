@@ -5,8 +5,11 @@
 ;; ruby
 (vendor 'ruby-mode)
 
-;; rspec
-(vendor 'rspec-mode)
+(require 'inf-ruby)
+(vendor 'ruby-compilation)
+
+;; rinari
+;(vendor 'rinari)
 
 ;; haml and sass
 (autoload 'haml-mode "haml-mode.el"
