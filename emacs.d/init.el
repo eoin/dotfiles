@@ -15,6 +15,6 @@
 ;; dont show the GNU splash screen
 (setq inhibit-startup-message t)
 
+;; misc utils
 (vendor 'maxframe)
 (vendor 'ack)
-
