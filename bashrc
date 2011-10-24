@@ -218,3 +218,5 @@ test -r ~/.shenv &&
 test -n "$INTERACTIVE" -a -n "$LOGIN" && {
     uname -npsr
 }
+
+eval "$(rbenv init -)"
