@@ -113,3 +113,6 @@ alias be="bundle exec"
 # MISC
 # --------------------------------------------------------------------
 
+# let rbenv do it's thing
+eval "$(rbenv init -)"
+
