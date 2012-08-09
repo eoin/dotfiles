@@ -109,6 +109,9 @@ HISTCONTROL=ignoreboth
 # bundler
 alias be="bundle exec"
 
+# gem
+alias gem-uninstall-all="gem list | cut -d\" \" -f1 | xargs gem uninstall -aIx"
+
 # --------------------------------------------------------------------
 # MISC
 # --------------------------------------------------------------------
