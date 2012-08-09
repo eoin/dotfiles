@@ -19,7 +19,6 @@
 # readline inputrc
 : ${INPUTRC=~/.inputrc}
 
-
 # ----------------------------------------------------------------------
 #  SHELL OPTIONS
 # ----------------------------------------------------------------------
@@ -84,10 +83,6 @@ esac
 : ${LC_ALL:="en_US.UTF-8"}
 export LANG LANGUAGE LC_CTYPE LC_ALL
 
-# always use PASSIVE mode ftp
-: ${FTP_PASSIVE:=1}
-export FTP_PASSIVE
-
 # ignore backups, CVS directories, python bytecode, vim swap files
 FIGNORE="~:CVS:#:.pyc:.swp:.swa:apache-solr-*"
 HISTCONTROL=ignoreboth
@@ -96,24 +91,6 @@ HISTCONTROL=ignoreboth
 # PAGER / EDITOR
 # ----------------------------------------------------------------------
 
-# See what we have to work with ...
-HAVE_VIM=$(command -v vim)
-
-# EDITOR
-test -n "$HAVE_VIM" &&
-EDITOR=vim ||
-EDITOR=vi
-export EDITOR
-
-# PAGER
-if test -n "$(command -v less)" ; then
-    PAGER="less -FirSwX"
-    MANPAGER="less -FiRswX"
-else
-    PAGER=more
-    MANPAGER="$PAGER"
-fi
-export PAGER MANPAGER
 
 # ----------------------------------------------------------------------
 # PROMPT
@@ -130,93 +107,7 @@ export PAGER MANPAGER
 # ----------------------------------------------------------------------
 
 
-# ----------------------------------------------------------------------
-# BASH COMPLETION
-# ----------------------------------------------------------------------
-
-if test -z "$BASH_COMPLETION" ; then
-    bash=${BASH_VERSION%.*}; bmajor=${bash%.*}; bminor=${bash#*.}
-    if [ "$PS1" ] && [ $bmajor -gt 1 ] ; then
-        # search for a bash_completion file to source
-        for f in /usr/pkg/etc/back_completion \
-            /usr/local/etc/bash_completion \
-            /opt/local/etc/bash_completion \
-            /etc/bash_completion \
-            ~/.bash_completion ;
-        do
-            test -f $f && {
-                . $f
-                break
-            }
-        done
-    fi
-    unset bash bmajor bminor
-fi
-
-# override and disable tilde expansion
-_expand() {
-    return 0
-}
-
-# ----------------------------------------------------------------------
-# LS AND DIRCOLORS
-# ----------------------------------------------------------------------
-
-# we always pass these to ls(1)
-LS_COMMON="-hBG"
-
-# if the dircolors utility is available, set that up to
-dircolors="$(type -P gdircolors dircolors | head -1)"
-test -n "$dircolors" && {
-    COLORS=/etc/DIR_COLORS
-    test -e "/etc/DIR_COLORS.$TERM"   && COLORS="/etc/DIR_COLORS.$TERM"
-    test -e "$HOME/.dircolors"        && COLORS="$HOME/.dircolors"
-    test ! -e "$COLORS"               && COLORS=
-    eval `$dircolors --sh $COLORS`
-}
-unset dircolors
-
-# setup the main ls alias if we've established common args
-test -n "$LS_COMMON" &&
-alias ls="command ls $LS_COMMON"
-
-# these use the ls aliases above
-alias ll="ls -l"
-alias l.="ls -d .*"
-
 # --------------------------------------------------------------------
-# MISC COMMANDS
+# MISC
 # --------------------------------------------------------------------
 
-# push SSH public key to another box
-push_ssh_cert() {
-    local _host
-    test -f ~/.ssh/id_dsa.pub || ssh-keygen -t dsa
-    for _host in "$@";
-    do
-        echo $_host
-        ssh $_host 'cat >> ~/.ssh/authorized_keys' < ~/.ssh/id_dsa.pub
-    done
-}
-
-# -------------------------------------------------------------------
-# USER SHELL ENVIRONMENT
-# -------------------------------------------------------------------
-
-# source ~/.shenv now if it exists
-test -r ~/.shenv &&
-. ~/.shenv
-
-# Use the color prompt by default when interactive
-#test -n "$PS1" &&
-#prompt_color
-
-# -------------------------------------------------------------------
-# MOTD / FORTUNE
-# -------------------------------------------------------------------
-
-test -n "$INTERACTIVE" -a -n "$LOGIN" && {
-    uname -npsr
-}
-
-eval "$(rbenv init -)"
