@@ -1,1 +1,2 @@
 emacs.d/elisp/custom.el
+*.elc
