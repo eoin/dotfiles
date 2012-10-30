@@ -1,2 +1,3 @@
 emacs.d/elisp/custom.el
 *.elc
+.DS_Store
