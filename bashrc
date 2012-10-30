@@ -1,7 +1,7 @@
 #!/bin/bash
 #
-# Based on the work of:
-#   Ryan Tomayko <http://tomayko.com/about> (with help from the internets).
+# Based on:
+#   http://github.com/rtomayko/dotfiles - Ryan Tomayko
 #
 
 # setup some basic variables
