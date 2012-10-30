@@ -10,7 +10,9 @@
 (load "elisp/temp")
 
 ;; remove chrome
-(when (functionp 'scroll-bar-mode) (scroll-bar-mode))
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
 
 ;; dont show the GNU splash screen
 (setq inhibit-startup-message t)
