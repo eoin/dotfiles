@@ -116,12 +116,14 @@ alias gem-uninstall-all="gem list | cut -d\" \" -f1 | xargs gem uninstall -aIx"
 # MISC
 # --------------------------------------------------------------------
 
-# aws
-export JAVA_HOME="$(/usr/libexec/java_home)"
-export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.aws/pk-*.pem | /usr/bin/head -1)"
-export EC2_CERT="$(/bin/ls "$HOME"/.aws/cert-*.pem | /usr/bin/head -1)"
-export AWS_RDS_HOME="/usr/local/Library/LinkedKegs/rds-command-line-tools/jars"
+# aws tools
+if [ -d "$HOME/.aws" ]; then
+  export JAVA_HOME="$(/usr/libexec/java_home)"
+  export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.aws/pk-*.pem | /usr/bin/head -1)"
+  export EC2_CERT="$(/bin/ls "$HOME"/.aws/cert-*.pem | /usr/bin/head -1)"
+  export AWS_RDS_HOME="/usr/local/Library/LinkedKegs/rds-command-line-tools/jars"
+fi
 
 # let rbenv do it's thing
-eval "$(rbenv init -)"
+type -P rbenv >/dev/null && eval "$(rbenv init -)"
 
